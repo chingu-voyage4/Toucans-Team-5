@@ -1,6 +1,6 @@
 /*CSS - Element Tags*/
 html {
-	height: 100%
+	height: 100%;
 	margin: 0;
 	padding: 0;
 }
@@ -9,17 +9,28 @@ body {
 	margin: 0;
 	padding: 0;
 	background-color: #1C2A37;
-	font-family: sans-serif
+	font-family: sans-serif;
+	font-size: 16px;
+	background: url(https://atomist.com/media/banners/atomist-starry-night.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 li {
 	list-style: none;
-	padding-left: 40px;
+	padding-left: 30px;
 }
 
 a {
 	text-decoration: none;
-	color: #fff;
+	color: #ecf0f1;
+	font-weight: 500;
+}
+
+a:hover {
+	color: #5bc399;
+	font-weight: 400;
 }
 
 header, .nav-bar, .nav-links ul, .auth-links ul {
@@ -28,6 +39,7 @@ header, .nav-bar, .nav-links ul, .auth-links ul {
 }
 
 header {
+	/*position: absolute;*/
 	justify-content: space-between;
 	margin: 0;
 	width: 100%;
@@ -41,9 +53,6 @@ header {
 
 /*CSS Classes and IDs*/
 .container {
-	background-image: url(img/space.jpeg);
-	background-size: cover;
-	background-position: center;
 }
 
 #logo {
@@ -63,8 +72,9 @@ header {
 }
 
 .nav-links {
-	flex: 1;
+	flex: 2;
 	text-align: center;
+	padding-right: 100px;
 }
 
 .nav-links ul {
@@ -81,6 +91,10 @@ header {
 	justify-content: flex-end;
 }
 
+.auth-links ul li a {	
+	font-weight: 300;
+}
+
 #get-started {
 	padding: 12px 8px;
 	border: 2px solid #5bc399;
@@ -92,7 +106,9 @@ header {
 	color: #5bc399;
 }
 
-#get-started a {
+#get-started:hover {
+	background-color: #5bc399;
+	color: #fff;
 }
 
 .banner {
