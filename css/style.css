@@ -1,8 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+
 /*CSS - Element Tags*/
 html {
-	height: 100%;
+	height: 100vh;
 	margin: 0;
 	padding: 0;
+	font-size: 12px;
+	font-family: 'Nanum Gothic', sans-serif;
 }
 
 body {
@@ -11,7 +16,7 @@ body {
 	background-color: #1C2A37;
 	font-family: sans-serif;
 	font-size: 16px;
-	background: url(https://atomist.com/media/banners/atomist-starry-night.jpg);
+	background: url(../img/space.jpeg);
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -50,8 +55,15 @@ header {
 	box-sizing: border-box;
 }
 
+/*Defaults*/
+.default-background {
+	background-color: #1C2A37
+}
+
 
 /*CSS Classes and IDs*/
+
+/*Navigation*/
 .container {
 }
 
@@ -72,6 +84,7 @@ header {
 }
 
 .nav-links {
+	max-width: 600px;
 	flex: 2;
 	text-align: center;
 	padding-right: 100px;
@@ -82,6 +95,8 @@ header {
 }
 
 .auth-links {
+	max-width: 300px;
+	min-width: 300px;
 	flex: 1;
 	font-family: helvetica;
 	padding-right: 25px;
@@ -111,6 +126,59 @@ header {
 	color: #fff;
 }
 
+/*Headliner*/
 .banner {
-	
+	width: 100%;
+	height: 600px;
+	background: transparent;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(bottom, transparent, #1C2A37);
+    background: -o-linear-gradient(bottom, transparent, #1C2A37);
+    background: linear-gradient(to bottom, transparent, #1C2A37);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.headliner {
+	margin: 0 auto;
+	width: 90%;
+	max-width: 1000px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.headliner-text {
+	width: 600px;
+	position: relative;
+	top: 45px;
+	right: 48%;
+	font-weight: 100;
+	color: #ffffff;
+	text-transform: uppercase;
+	line-height: 6rem;
+}
+
+.headliner-text h1 {
+	font-size: 4.3rem;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 200;
+}
+
+.headliner-text button {
+	padding: 25px 45px;
+	background-color: #5FC29A;
+	border: none;
+	border-radius: 4px;
+	font-size: 1.2rem;
+	font-family: 'Nanum Gothic', sans-serif;
+	font-weight: 100;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+
+.headliner-img {
+	position: absolute;
+	top: 60px;
+	left: 50%;
+}
+
+.headliner-img img {
+	height: 700px;
 }
