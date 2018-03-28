@@ -186,7 +186,7 @@ header {
 
 /*3 Column Section*/
 .content-section {
-	padding-top: 60px;
+	padding-top: 90px;
 	background-color: #182430;
 }
 
@@ -200,7 +200,9 @@ header {
 }
 
 .column {
-	padding: 14px;
+	padding: 8px;
+	width: 33%;
+	box-sizing: border-box;
 }
 
 .fas {
@@ -218,7 +220,7 @@ header {
 }
 
 .column p {
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	font-size: 1.2rem;
 	font-weight: 100;
 	font-family: 'Nanum Gothic', sans-serif;
@@ -227,17 +229,21 @@ header {
 	flex-grow: 1;
 }
 
+.column ul {
+	padding: 0;
+}
+
 .column ul li {
 	margin: 0;
-	padding: 0;
+	padding: 5px 10px;
 	font-size: 1.2rem;
 	font-weight: 100;
 	font-family: 'Nanum Gothic', sans-serif;
 	text-align: left;
 	color: #808694;
-	line-height: 2rem;
+	line-height: 1.8rem;
 	list-style: none;
-	margin-bottom: 12px;
+	margin-bottom: 8px;
 }
 
 .column ul li::before {
