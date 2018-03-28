@@ -64,7 +64,8 @@ header {
 /*CSS Classes and IDs*/
 
 /*Navigation*/
-.container {
+.container {	
+	width: 100%;
 }
 
 #logo {
@@ -256,6 +257,33 @@ header {
 	color: #5FC29A;
 }
 
+/*Footer Nav*/
+#footer-pre-links {
+	margin: 0 auto;
+	padding: 40px 0;
+	background-color: #287E7D;
+	display: flex;
+	justify-content: center;
+}
+
+#footer-pre-links ul {	
+	max-width: 1000px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	text-transform: uppercase;
+}
+
+#footer-pre-links ul li {	
+	margin: 0 20px;
+	font-size: 1.2rem;
+}
+
+#footer-pre-links ul li a {	
+	color: #ffffff;
+}
+
 /*Footer Sign Up*/
 #footer-sign-up {
 	padding: 25px 10% 90px 10%;
@@ -285,7 +313,7 @@ header {
 	width: 130px;
 	padding: 19px 8px 19px 8px;
 	border: none;
-	background-color: #5FC29A;
+	background-color: #287E7D;
 	color: #ffffff;
 	font-weight: 400;
 	font-size: 1.3rem;
