@@ -209,9 +209,12 @@ header {
 }
 
 .column h3 {
-	font-size: 2rem;
+	padding-top: 25px;
+	font-size: 2.1rem;
 	font-weight: 400;
 	font-family: 'Nanum Gothic', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .3rem;
 }
 
 .column p {
@@ -220,6 +223,7 @@ header {
 	font-weight: 100;
 	font-family: 'Nanum Gothic', sans-serif;
 	line-height: 2rem;
+	letter-spacing: .1rem;
 	flex-grow: 1;
 }
 
@@ -244,6 +248,37 @@ header {
 
 .column a {
 	color: #5FC29A;
+}
+
+/*Footer*/
+footer {
+	background-color: #182430!important;
+	padding: 30px;
+	font-size: 1.1rem;
+	font-weight: 100;
+	color: #ffffff;
+	letter-spacing: .4rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+footer a {
+	color: #5FC29A;
+}
+
+.heart {
+	color: #c0392b;
+}
+
+.copyright {
+	padding-top: 10px;
+	color: #808694;
+}
+
+.fa-twitter {
+	margin-top: 50px;
+	color: #2AA3F0;
+	font-size: 2rem;
 }
 
 
