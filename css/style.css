@@ -64,7 +64,8 @@ header {
 /*CSS Classes and IDs*/
 
 /*Navigation*/
-.container {
+.container {	
+	width: 100%;
 }
 
 #logo {
@@ -186,7 +187,7 @@ header {
 
 /*3 Column Section*/
 .content-section {
-	padding-top: 60px;
+	padding: 90px 10%;
 	background-color: #182430;
 }
 
@@ -200,7 +201,9 @@ header {
 }
 
 .column {
-	padding: 14px;
+	padding: 8px;
+	width: 33%;
+	box-sizing: border-box;
 }
 
 .fas {
@@ -209,31 +212,39 @@ header {
 }
 
 .column h3 {
-	font-size: 2rem;
+	padding-top: 25px;
+	font-size: 2.1rem;
 	font-weight: 400;
 	font-family: 'Nanum Gothic', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: .3rem;
 }
 
 .column p {
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	font-size: 1.2rem;
 	font-weight: 100;
 	font-family: 'Nanum Gothic', sans-serif;
 	line-height: 2rem;
+	letter-spacing: .1rem;
 	flex-grow: 1;
+}
+
+.column ul {
+	padding: 0;
 }
 
 .column ul li {
 	margin: 0;
-	padding: 0;
+	padding: 5px 10px;
 	font-size: 1.2rem;
 	font-weight: 100;
 	font-family: 'Nanum Gothic', sans-serif;
 	text-align: left;
 	color: #808694;
-	line-height: 2rem;
+	line-height: 1.8rem;
 	list-style: none;
-	margin-bottom: 12px;
+	margin-bottom: 8px;
 }
 
 .column ul li::before {
@@ -244,6 +255,101 @@ header {
 
 .column a {
 	color: #5FC29A;
+}
+
+/*Footer Nav*/
+#footer-pre-links {
+	margin: 0 auto;
+	padding: 40px 0;
+	background-color: #287E7D;
+	display: flex;
+	justify-content: center;
+}
+
+#footer-pre-links ul {	
+	max-width: 1000px;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	text-transform: uppercase;
+}
+
+#footer-pre-links ul li {	
+	margin: 0 20px;
+	font-size: 1.2rem;
+}
+
+#footer-pre-links ul li a {	
+	color: #ffffff;
+}
+
+/*Footer Sign Up*/
+#footer-sign-up {
+	padding: 25px 10% 90px 10%;
+	text-align: center;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+
+#footer-sign-up p {
+	padding-bottom: 12px;
+	font-size: 2rem;
+	font-weight: 100;
+	font-family: 'Nanum Gothic', sans-serif;
+	letter-spacing: .2rem;
+}
+
+#footer-sign-up input {
+	width: 300px;
+	padding: 19px 8px 19px 8px;
+	border: 1px solid #808694;
+	background-color: transparent;
+	font-size: 1.3rem;
+	color: #F6F6F6;
+}
+
+#footer-sign-up button {
+	width: 130px;
+	padding: 19px 8px 19px 8px;
+	border: none;
+	background-color: #287E7D;
+	color: #ffffff;
+	font-weight: 400;
+	font-size: 1.3rem;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+}
+
+/*Footer*/
+footer {
+	background-color: #182430!important;
+	padding: 30px;
+	font-size: 1.1rem;
+	font-weight: 100;
+	color: #ffffff;
+	letter-spacing: .4rem;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+footer a {
+	color: #5FC29A;
+}
+
+.heart {
+	color: #c0392b;
+}
+
+.copyright {
+	padding-top: 10px;
+	color: #808694;
+}
+
+.fa-twitter {
+	margin-top: 50px;
+	color: #2AA3F0;
+	font-size: 2rem;
 }
 
 
