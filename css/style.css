@@ -186,7 +186,7 @@ header {
 
 /*3 Column Section*/
 .content-section {
-	padding-top: 90px;
+	padding: 90px 10%;
 	background-color: #182430;
 }
 
@@ -254,6 +254,43 @@ header {
 
 .column a {
 	color: #5FC29A;
+}
+
+/*Footer Sign Up*/
+#footer-sign-up {
+	padding: 25px 10% 90px 10%;
+	text-align: center;
+	color: #ffffff;
+	text-transform: uppercase;
+}
+
+#footer-sign-up p {
+	padding-bottom: 12px;
+	font-size: 2rem;
+	font-weight: 100;
+	font-family: 'Nanum Gothic', sans-serif;
+	letter-spacing: .2rem;
+}
+
+#footer-sign-up input {
+	width: 300px;
+	padding: 19px 8px 19px 8px;
+	border: 1px solid #808694;
+	background-color: transparent;
+	font-size: 1.3rem;
+	color: #F6F6F6;
+}
+
+#footer-sign-up button {
+	width: 130px;
+	padding: 19px 8px 19px 8px;
+	border: none;
+	background-color: #5FC29A;
+	color: #ffffff;
+	font-weight: 400;
+	font-size: 1.3rem;
+	text-transform: uppercase;
+	letter-spacing: .1rem;
 }
 
 /*Footer*/
