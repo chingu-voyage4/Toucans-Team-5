@@ -103,19 +103,101 @@
 
 			<div class="code-container">
 				<div class="code-tabs">
-					<div class="code-tab code-tab-1 tab-muted">Create Project</div>
-					<div class="code-tab code-tab-2 tab-muted">Update Dependencies</div>
-					<div class="code-tab code-tab-3 tab-muted">Bot Command</div>
+					<div id="code-tab-1" class="code-tab active">Create Project</div>
+					<div id="code-tab-2" class="code-tab inactive">Update Dependencies</div>
+					<div id="code-tab-3" class="code-tab inactive">Bot Command</div>
 				</div>
 				<div class="code-contents">
-					<div id="code-content-1" class="code-content content-muted">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum odio necessitatibus natus esse modi beatae porro, consequatur praesentium accusantium voluptate repudiandae error incidunt veniam ducimus quod labore molestiae? Laborum possimus molestias, repellat officiis ab laudantium aut ad blanditiis optio corrupti perspiciatis doloribus similique eveniet porro consequatur sit! Rem, sed dolore.
+					<div id="code-content-1" class="code-content">
+						<pre>
+@CommandHandler("Kotlin Spring 5 generator", "Generate a new spring Kotlin project")
+
+export class KotlinSpring5 extends JavaSeed {
+
+    public projectEditor(ctx: HandlerContext, params: this): ProjectEditor {
+        return transformSeed;
+    }
+
+}
+
+const transformSeed: ProjectEditor = (project: Project, ctx: HandlerContext, pars: KotlinSpring5) => {
+    const artifact = camelize(pars.artifactId);
+    const appName = artifact.charAt(0).toUpperCase() + artifact.substr(1);
+    const smartArtifactId = (pars.artifactId === "${projectName}") ? project.name : pars.artifactId;
+    return updatePom(project, smartArtifactId, pars.groupId, pars.version, pars.description)
+        .then(inferFromKotlinSource)
+        .then(structure => !!structure ?
+            renameAppClass(project, structure, appName)
+                .then(p => movePackage(p, structure.applicationPackage, pars.rootPackage, AllKotlinFiles))
+            : project);
+};
+
+function renameAppClass(project: Project, structure: SpringBootProjectStructure,
+                        appName: string): Promise {
+    return doWithFiles(project, AllKotlinFiles, f =>
+        f.replaceAll(structure.applicationClassStem, appName)
+            .then(f => f.path.includes(structure.applicationClassStem) ?
+                f.setPath(f.path.replace(structure.applicationClassStem, appName)) :
+                f
+            )
+    )
+}
+						</pre>
 					</div>
-					<div id="code-content-2" class="code-content content-muted">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis fugiat debitis ratione dolorum, obcaecati nemo suscipit modi ipsum blanditiis voluptate. Earum necessitatibus, aperiam eos. Id veniam inventore fuga, laboriosam magni vero nulla odio vel laborum blanditiis consequuntur maiores maxime illum numquam debitis nobis cupiditate repellat animi, deserunt cumque, consequatur in!
+					<div id="code-content-2" class="code-content">
+						<pre>
+@CommandHandler("Upgrade versions of Spring Boot across an org", "upgrade spring boot version")
+export class SpringBootVersionUpgrade extends EditorCommandSupport {
+
+    @Secret(Secrets.userToken(["repo", "user"]))
+    protected githubToken;
+
+    @Parameter({
+        displayName: "Desired Spring Boot version",
+        description: "The desired Spring Boot version across these repos",
+        pattern: /^.+$/,
+        validInput: "Semantic version",
+        required: false,
+    })
+    public desiredBootVersion: string;
+
+    public projectEditor(): ProjectEditor {
+        return setSpringBootVersionEditor(this.desiredBootVersion);
+    }
+
+    public editInfo(p: Project): EditMode {
+        return new PullRequest("spring-boot-" + this.desiredBootVersion,
+            "Upgrade Spring Boot to " + this.desiredBootVersion);
+    }
+}
+
+export function setSpringBootVersionEditor(desiredBootVersion: string): AnyProjectEditor {
+    return p =>
+        doWithAtMostOneMatch(p, "pom.xml",
+            parentStanzaOfGrammar(SpringBootStarter), m => {
+                if (m.version.value !== desiredBootVersion) {
+                    m.version.value = desiredBootVersion;
+                }
+            });
+}
+						</pre>
 					</div>
-					<div id="code-content-3" class="code-content content-muted">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus libero voluptatum accusantium, itaque, repudiandae suscipit distinctio deleniti enim harum animi esse. Consectetur ea possimus culpa quis nihil illo soluta reprehenderit harum numquam. Adipisci, pariatur. Laborum cupiditate placeat, neque repellat, veritatis repudiandae aliquid reiciendis. Ipsum at assumenda, minus consectetur cum totam!
+					<div id="code-content-3" class="code-content">
+						<pre>
+@CommandHandler("Query Stack Overflow", "search so")
+@Tags("stack-overflow")
+export class SearchStackOverflow implements HandleCommand {
+
+    @Parameter({ description: "your search query", pattern: /^.*$/ })
+    public q: string;
+
+    public handle(ctx: HandlerContext): Promise {
+        return axios.get(`${apiSearchUrl}${encodeURIComponent(this.q)}`)
+            .then(res => this.handleResult(res, this.q))
+            .then(msg => return ctx.messageClient.respond(msg) });
+    }
+}
+						</pre>
 					</div>
 				</div>
 			</div>
@@ -155,7 +237,7 @@
 
 
 	<!-- JS Scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="js/scripts.js" type="text/javascript"></script>
 
 </body>

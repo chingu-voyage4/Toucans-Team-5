@@ -1,40 +1,39 @@
-
-// $(window).load(function() {
-// 	$('.code-tab-1').addClass('tab-highlighted');
-// });
-
-
 $(document).ready(function() {
 
-	$('.tab-muted').on('click', function() {
-		$('.tab-highlighted').addClass('tab-muted');
-		$('.tab-highlighted').removeClass('tab-highlighted');
-		$(this).removeClass('tab-muted');
-		$(this).addClass('tab-highlighted');
-		// $(this).addClass('content-highlighted').siblings().removeClass('content-highlighted');
+	$('#code-content-1').show();
+	$('#code-content-2').hide();
+	$('#code-content-3').hide();
 
+	$('#code-tab-1').on('click', function(){
+	console.log($('.code-content-1'));
+		$('#code-content-1').show();
+		$('#code-content-2').hide();
+		$('#code-content-3').hide();
 
-		if ($(this).hasClass('code-tab-1')) {
-			$('.code-content-1').removeClass('content-muted');
-			$('.code-content-1').addClass('content-highlighted');
-			$('.code-content-2').addClass('content-muted');
-			$('.code-content-2').removeClass('content-highlighted');
-			$('.code-content-3').addClass('content-muted');
-			$('.code-content-3').removeClass('content-highlighted');
-		} else if ($(this).hasClass('code-tab-1')) {
-			$('.code-content-1').addClass('content-muted');
-			$('.code-content-1').removeClass('content-highlighted');
-			$('.code-content-2').removeClass('content-muted');
-			$('.code-content-2').addClass('content-highlighted');
-			$('.code-content-3').addClass('content-muted');
-			$('.code-content-3').removeClass('content-highlighted');
-		} else {
-			$('.code-content-1').addClass('content-muted');
-			$('.code-content-1').removeClass('content-highlighted');
-			$('.code-content-2').addClass('content-muted');
-			$('.code-content-2').removeClass('content-highlighted');
-			$('.code-content-3').removeClass('content-muted');
-			$('.code-content-3').addClass('content-highlighted');
-		}
+		$(this).removeClass('inactive').addClass('active');	
+		$('#code-tab-2').removeClass('active').addClass('inactive');	
+		$('#code-tab-3').removeClass('active').addClass('inactive');	
+	});
+
+	$('#code-tab-2').on('click', function(){
+		$('#code-content-2').show();
+		$('#code-content-1').hide();
+		$('#code-content-3').hide();
+
+		$(this).removeClass('inactive').addClass('active');	
+		$('#code-tab-1').removeClass('active').addClass('inactive');	
+		$('#code-tab-3').removeClass('active').addClass('inactive');	
+	});
+
+	$('#code-tab-3').on('click', function(){
+		$('#code-content-3').show();
+		$('#code-content-2').hide();
+		$('#code-content-1').hide();
+
+		$(this).removeClass('inactive').addClass('active');	
+		$('#code-tab-2').removeClass('active').addClass('inactive');	
+		$('#code-tab-1').removeClass('active').addClass('inactive');	
 	});
 });
+
+		
