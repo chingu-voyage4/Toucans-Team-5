@@ -286,7 +286,7 @@ header {
 
 /*Code Tabs*/
 #code-samples {
-	padding: 100px;
+	padding: 100px 100px 0 100px;
 	height: 1050px;
 }
 
@@ -342,10 +342,12 @@ header {
 	color: #ffffff;
 }
 
-/*.inactive {
-	background-color: transparent;
-	color: #bababa;
-}*/
+/*Code Syntax Colors*/
+.code-green { color: #0FC696; }
+.code-teal { color: #008480; }
+.code-blue { color: #8491CC; }
+.code-neon { color: #B7E244; }
+
 
 
 

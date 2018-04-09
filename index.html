@@ -110,33 +110,33 @@
 				<div class="code-contents">
 					<div id="code-content-1" class="code-content">
 						<pre>
-@CommandHandler("Kotlin Spring 5 generator", "Generate a new spring Kotlin project")
+<span class="code-teal">@CommandHandler</span>(<span class="code-green">"Kotlin Spring 5 generator", "Generate a new spring Kotlin project"</span>)
 
-export class KotlinSpring5 extends JavaSeed {
+<span class="code-teal">export class</span> <span class="code-neon">KotlinSpring5 extends</span> <span class="code-neon">JavaSeed</span> {
 
-    public projectEditor(ctx: HandlerContext, params: this): ProjectEditor {
-        return transformSeed;
+    public projectEditor(ctx: HandlerContext, params: <span class="code-teal">this</span>): ProjectEditor {
+        <span class="code-teal">return</span> transformSeed;
     }
 
 }
 
-const transformSeed: ProjectEditor = (project: Project, ctx: HandlerContext, pars: KotlinSpring5) => {
-    const artifact = camelize(pars.artifactId);
-    const appName = artifact.charAt(0).toUpperCase() + artifact.substr(1);
-    const smartArtifactId = (pars.artifactId === "${projectName}") ? project.name : pars.artifactId;
-    return updatePom(project, smartArtifactId, pars.groupId, pars.version, pars.description)
+<span class="code-teal">const</span> transformSeed: ProjectEditor = (<span class="code-blue">project: Project, ctx: HandlerContext, pars: KotlinSpring5</span>) => {
+    <span class="code-teal">const</span> artifact = camelize(pars.artifactId);
+    <span class="code-teal">const</span> appName = artifact.charAt(<span class="code-blue">0</span>).toUpperCase() + artifact.substr(1);
+    <span class="code-teal">const</span> smartArtifactId = (pars.artifactId === <span class="code-green">"${projectName}"</span>) ? project.name : pars.artifactId;
+    <span class="code-teal">return</span> updatePom(project, smartArtifactId, pars.groupId, pars.version, pars.description)
         .then(inferFromKotlinSource)
-        .then(structure => !!structure ?
+        .then(<span class="code-blue">structure</span> => !!structure ?
             renameAppClass(project, structure, appName)
-                .then(p => movePackage(p, structure.applicationPackage, pars.rootPackage, AllKotlinFiles))
+                .then(<span class="code-blue">p</span> => movePackage(p, structure.applicationPackage, pars.rootPackage, AllKotlinFiles))
             : project);
 };
 
-function renameAppClass(project: Project, structure: SpringBootProjectStructure,
-                        appName: string): Promise {
-    return doWithFiles(project, AllKotlinFiles, f =>
+<span class="code-teal">function</span> <span class="code-neon">renameAppClass</span>(<span class="code-blue">project: Project, structure: SpringBootProjectStructure,
+                        appName: string</span>): <span class="code-neon">Promise</span> {
+    <span class="code-teal">return</span> doWithFiles(project, AllKotlinFiles, f =>
         f.replaceAll(structure.applicationClassStem, appName)
-            .then(f => f.path.includes(structure.applicationClassStem) ?
+            .then(<span class="code-blue">f</span> => f.path.includes(structure.applicationClassStem) ?
                 f.setPath(f.path.replace(structure.applicationClassStem, appName)) :
                 f
             )
@@ -146,36 +146,36 @@ function renameAppClass(project: Project, structure: SpringBootProjectStructure,
 					</div>
 					<div id="code-content-2" class="code-content">
 						<pre>
-@CommandHandler("Upgrade versions of Spring Boot across an org", "upgrade spring boot version")
-export class SpringBootVersionUpgrade extends EditorCommandSupport {
+<span class="code-teal">@CommandHandler</span>(<span class="code-green">"Upgrade versions of Spring Boot across an org"</span>, "upgrade spring boot version")
+export <span class="code-teal">class</span> <span class="code-neon">SpringBootVersionUpgrade</span> <span class="code-teal">extends</span> <span class="code-neon">EditorCommandSupport</span> {
 
-    @Secret(Secrets.userToken(["repo", "user"]))
-    protected githubToken;
+    <span class="code-teal">@Secret</span>(Secrets.userToken([<span class="code-green">"repo", "user"</span>]))
+    <span class="code-teal">protected</span> githubToken;
 
-    @Parameter({
-        displayName: "Desired Spring Boot version",
-        description: "The desired Spring Boot version across these repos",
+    <span class="code-teal">@Parameter</span>({
+        displayName: <span class="code-green">"Desired Spring Boot version"</span>,
+        description: <span class="code-green">"The desired Spring Boot version across these repos"</span>,
         pattern: /^.+$/,
-        validInput: "Semantic version",
-        required: false,
+        validInput: <span class="code-green">"Semantic version"</span>,
+        required: <span class="code-teal">false</span>,
     })
-    public desiredBootVersion: string;
+    <span class="code-teal">public</span> desiredBootVersion: string;
 
-    public projectEditor(): ProjectEditor {
-        return setSpringBootVersionEditor(this.desiredBootVersion);
+    <span class="code-teal">public</span> <span class="code-neon">projectEditor</span><span class="code-blue">()</span>: ProjectEditor {
+        return</span> setSpringBootVersionEditor(<span class="code-teal">this</span>.desiredBootVersion);
     }
 
-    public editInfo(p: Project): EditMode {
-        return new PullRequest("spring-boot-" + this.desiredBootVersion,
-            "Upgrade Spring Boot to " + this.desiredBootVersion);
+    <span class="code-teal">public</span> <span class="code-neon">editInfo</span><span class="code-blue">(p: Project)</span>: EditMode {
+        <span class="code-teal">return new</span> PullRequest(<span class="code-green">"spring-boot-"</span> + <span class="code-teal">this</span>.desiredBootVersion,
+            <span class="code-green">"Upgrade Spring Boot to "</span> + <span class="code-teal">this</span>.desiredBootVersion);
     }
 }
 
-export function setSpringBootVersionEditor(desiredBootVersion: string): AnyProjectEditor {
-    return p =>
-        doWithAtMostOneMatch(p, "pom.xml",
+export function <span class="code-neon">setSpringBootVersionEditor</span><span class="code-blue">(desiredBootVersion: string)</: AnyProjectEditor {
+    <span class="code-teal">return</span> p =>
+        doWithAtMostOneMatch(p, <span class="code-green">"pom.xml"</span>,
             parentStanzaOfGrammar(SpringBootStarter), m => {
-                if (m.version.value !== desiredBootVersion) {
+                <span class="code-teal">if</span> (m.version.value !== desiredBootVersion) {
                     m.version.value = desiredBootVersion;
                 }
             });
@@ -184,17 +184,17 @@ export function setSpringBootVersionEditor(desiredBootVersion: string): AnyProje
 					</div>
 					<div id="code-content-3" class="code-content">
 						<pre>
-@CommandHandler("Query Stack Overflow", "search so")
-@Tags("stack-overflow")
-export class SearchStackOverflow implements HandleCommand {
+<span class="code-teal">@CommandHandler</span>(<span class="code-green">"Query Stack Overflow", "search so"</span>)
+@Tags(<span class="code-green">"stack-overflow"</span>)
+<span class="code-teal">export class</span> <span class="code-neon">SearchStackOverflow implements HandleCommand</span> {
 
-    @Parameter({ description: "your search query", pattern: /^.*$/ })
+    @Parameter({ description: <span class="code-green">"your search query"</span>, pattern: <span class="code-blue">/^.*$/</span> })
     public q: string;
 
-    public handle(ctx: HandlerContext): Promise {
-        return axios.get(`${apiSearchUrl}${encodeURIComponent(this.q)}`)
-            .then(res => this.handleResult(res, this.q))
-            .then(msg => return ctx.messageClient.respond(msg) });
+    public handle(ctx: HandlerContext): <span class="code-green">Promise</span> {
+        <span class="code-teal">return</span> axios.get(<span class="code-green">`${apiSearchUrl}${encodeURIComponent(</span><span class="code-teal">this.</span><span class="code-green">q)}`</span><span class="code-teal">this</span>.)
+            .then(<span class="code-blue">res</span> => <span class="code-teal">this</span>.handleResult(res, <span class="code-teal">this</span>.q))
+            .then(<span class="code-blue">msg</span> => <span class="code-teal">return</span> ctx.messageClient.respond(<span class="code-blue">msg</span>) });
     }
 }
 						</pre>
