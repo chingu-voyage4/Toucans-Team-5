@@ -47,6 +47,14 @@ $(document).ready(function() {
 		    .end()
 		    .appendTo('.testimonial');
 	},  4000);
+
+
+	// Code for chat
+	$('.chat-box').hide();
+
+	$('.chat-button').click(function() {
+		$('.chat-box').toggle(100);
+	});
 });
 
 		
