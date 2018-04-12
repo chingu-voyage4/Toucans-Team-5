@@ -2,6 +2,7 @@
 
 
 /*CSS - Element Tags*/
+
 html {
 	height: 100vh;
 	margin: 0;
@@ -20,6 +21,7 @@ body {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	overflow-x: hidden;
 }
 
 li {
@@ -54,6 +56,8 @@ header {
 	padding: 0 0 0 45px;
 	box-sizing: border-box;
 }
+
+
 
 /*Defaults*/
 .default-background {
@@ -137,6 +141,10 @@ header {
     background: linear-gradient(to bottom, transparent, #1C2935);  /* Chrome 10-25, Safari 5.1-6 */ /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
+/*.headliner .headliner-img {
+	overflow: hidden;
+}*/
+
 .headliner, .columns {
 	margin: 0 auto;
 	width: 90%;
@@ -150,6 +158,7 @@ header {
 	position: relative;
 	top: 45px;
 	right: 48%;
+	overflow: hidden;
 	font-weight: 100;
 	color: #ffffff;
 	text-transform: uppercase;
@@ -175,6 +184,9 @@ header {
 }
 
 .headliner-img {
+	width: 610px;
+	box-sizing: border-box;
+	/*overflow: hidden;*/
 	position: absolute;
 	top: 60px;
 	left: 50%;
@@ -449,7 +461,30 @@ footer a {
 
 
 
+/*Media Queries*/
+@media (max-width: 1250px) {
+	.headliner-text {
+		width: 400px;
+		position: absolute;
+		top: 140px;
+		left: 55px;
+		line-height: 6rem;
+	}
+}
 
+@media (max-width: 600px) {
+	.headliner-text {
+		width: 300px;
+		position: absolute;
+		top: 170px;
+		left: 25px;
+	}
+
+	.headliner-text h1 {
+		font-size: 3.5rem;
+		line-height: 4rem;
+	}
+}
 
 
 
