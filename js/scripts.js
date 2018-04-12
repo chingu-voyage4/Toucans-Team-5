@@ -1,5 +1,5 @@
 $(document).ready(function() {
-
+	// Code for code tabs
 	$('#code-content-1').show();
 	$('#code-content-2').hide();
 	$('#code-content-3').hide();
@@ -34,6 +34,19 @@ $(document).ready(function() {
 		$('#code-tab-2').removeClass('active').addClass('inactive');	
 		$('#code-tab-1').removeClass('active').addClass('inactive');	
 	});
+
+
+	// Code for testimonial Slide show
+	$('.testimonial > div:gt(0)').hide();
+
+		setInterval(function() { 
+		  $('.testimonial > div:first')
+		    .fadeOut(0)
+		    .next()
+		    .fadeIn(1200)
+		    .end()
+		    .appendTo('.testimonial');
+	},  4000);
 });
 
 		
